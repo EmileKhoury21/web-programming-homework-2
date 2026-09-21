@@ -1,0 +1,206 @@
+:root {
+  /* variables that contain the colors used in my homework */
+  --color-b: black;
+  --color-w: white;
+  --color-nav: #333333;
+  --color-border: #cccccc;
+  --color-input: #999999;
+
+  /* base font size */
+  --font-base: 15px;
+
+  /* these variables will be used for spacing */
+  --spc3: 20px;
+  --spc4: 15px;
+  --spc5: 10px;
+  --spc6: 8px;
+  --spc7: 5px;
+  --spc8: 2px;
+  --spc9: 1px;
+}
+
+
+@keyframes animation {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.1); }
+}
+
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  font-size: var(--font-base);
+  line-height: 1.5;
+  color: var(--color-b);
+  background: var(--color-w);
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    'header'
+    'nav'
+    'main'
+    'logo'
+    'footer';
+  gap: var(--spc3);
+}
+
+
+header { grid-area: header; }
+nav    { grid-area: nav; }
+main   { grid-area: main; }
+.logo  { grid-area: logo; }
+footer { grid-area: footer; }
+
+
+header {
+  background: var(--color-b);
+  color: var(--color-w);
+  padding: var(--spc3);
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--spc7);
+}
+
+header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+header p {
+  font-size: 1rem;
+  font-weight: 400;
+  margin: 0;
+}
+
+nav {
+  background: var(--color-nav);
+  padding: var(--spc5);
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--spc5);
+}
+
+nav a {
+  display: block;
+  padding: var(--spc6) var(--spc4);
+  color: var(--color-w);
+  border: var(--spc9) solid var(--color-w);
+  border-radius: var(--spc7);
+  text-align: center;
+  transition: background 0.2s, color 0.2s;
+}
+
+nav a:hover {
+  background: var(--color-input);
+}  /* when the cursor is on one of the navigation elements it will create a little effect */
+
+main {
+  padding: var(--spc3);
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--spc3);
+}
+
+section {
+  background: var(--color-w);
+  padding: var(--spc3);
+  border: var(--spc9) solid var(--color-border);
+}
+
+
+h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--color-b);
+}
+
+section p {
+  line-height: 1.6;
+}
+
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spc5);
+}
+
+form label {
+  font-weight: 600;
+}
+
+form input,
+form textarea {
+  padding: var(--spc7);
+  border: var(--spc9) solid var(--color-input);
+  font-family: inherit;
+  font-size: inherit;
+  min-width: 0;
+}
+
+button {
+  background: var(--color-b);
+  color: var(--color-w);
+  border: var(--spc9) solid var(--color-b);
+  padding: var(--spc6) var(--spc4);
+  align-self: flex-start;
+
+  animation: animation 2s ease-in-out infinite;
+}
+
+/* turns the animation off for users who prefer less motion */
+@media (prefers-reduced-motion: reduce) {
+  button { animation: none; }
+}
+
+
+.logo {
+  border: var(--spc8) solid var(--color-b);
+  padding: var(--spc7);
+  justify-self: center;
+}
+
+
+footer {
+  background: var(--color-b);
+  color: var(--color-w);
+  padding: var(--spc4);
+  display: flex;
+  justify-content: center;
+}
+
+
+/* stacked -> multi-column once there is room */
+@media (min-width: 768px) {
+
+  body {
+    grid-template-columns: 220px 1fr;
+    grid-template-areas:
+      'header header'
+      'nav    main'
+      'logo   main'
+      'footer footer';
+  }
+
+  header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  nav ul {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--spc5);
+  }
+}
