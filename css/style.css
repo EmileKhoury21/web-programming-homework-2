@@ -165,10 +165,14 @@ button {
 
 
 .logo {
+  display: flex;
   border: var(--spc8) solid var(--color-b);
   padding: var(--spc7);
   justify-self: center;
+  align-self: start;
+
 }
+
 
 
 footer {
